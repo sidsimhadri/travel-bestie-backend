@@ -13,7 +13,12 @@ const UserController = (app) => {
     app.put('/api/users/sendRequest/:uid/:fid', sendFriendRequest);
     app.put('/api/users/acceptRequest/:uid/:fid', acceptFriendRequest);
     app.put('/api/users/declineRequest/:uid/:fid', declineFriendRequest);
-    app.put('/api/users/removeFriend/:uid/:fid', removeFriend);
+  app.put('/api/users/removeFriend/:uid/:fid', removeFriend);
+  
+
+  // Quiz-related routes
+  app.get('/api/users/:uid/quiz', getQuizAnswers);
+  app.put('/api/users/:uid/quiz', setQuizAnswers);
 }
 
 
@@ -98,6 +103,19 @@ const updateUser = async (req, res) => {
     .updateUser(userIdToUpdate,
       updates);
   res.json(status);
+}
+
+const getQuizAnswers = async (req, res) => {
+  const uid = req.params.uid;
+  const quizAnswers = await usersDao.getQuizAnswers(uid);
+  res.json(quizAnswers);
+}
+
+const setQuizAnswers = async (req, res) => {
+  const uid = req.params.uid;
+  const quizAnswers = req.body;
+  await usersDao.setQuizAnswers(uid, quizAnswers);
+  res.json({ success: true });
 }
 
 

@@ -2,6 +2,12 @@ import mongoose from "mongoose";
 
 const { Schema, Types } = mongoose;
 
+const quizAnswerSchema = new Schema({
+    questionNumber: Number,
+    questionText: String,
+    answer: String
+});
+
 const usersSchema = new Schema({
     username: {
         type: String,
@@ -32,7 +38,8 @@ const usersSchema = new Schema({
     friends: [{
         type: Types.ObjectId,
         ref: 'users'
-    }]
+    }],
+    quizAnswers: [quizAnswerSchema]  // This will store the user's answers to the quiz
 }, {
     collection: "users"
 });

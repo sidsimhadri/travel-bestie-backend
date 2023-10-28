@@ -35,3 +35,12 @@ export const removeFriend = async (uid, fid) => {
     await usersModel.updateOne({ _id: uid }, { $pull: { friends: fid } });
     await usersModel.updateOne({ _id: fid }, { $pull: { friends: uid } });
 }
+
+export const setQuizAnswers = async (uid, quizAnswers) => {
+    await User.findByIdAndUpdate(uid, { quizAnswers }, { new: true });
+};
+
+export const getQuizAnswers = async (uid) => {
+    const user = await usersModel.findById(uid);
+    return user.quizAnswers;
+}
