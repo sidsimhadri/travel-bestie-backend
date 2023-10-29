@@ -4,7 +4,6 @@ const { Schema, Types } = mongoose;
 
 const quizAnswerSchema = new Schema({
     questionNumber: Number,
-    questionText: String,
     answer: String
 });
 

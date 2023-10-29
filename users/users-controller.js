@@ -16,8 +16,8 @@ const UserController = (app) => {
   
   
   // Quiz-related routes
-  app.get('/api/users/:uid/quiz', getQuizAnswers);
-  app.put('/api/users/:uid/quiz', setQuizAnswers);
+  app.get('/api/user/:uid/quiz', getQuizAnswers);
+  app.put('/api/user/:uid/quiz', setQuizAnswers);
 }
 
 
