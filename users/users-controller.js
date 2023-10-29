@@ -4,7 +4,8 @@ const UserController = (app) => {
   app.post('/api/users', createUser);
   app.delete('/api/users/:uid', deleteUser);
   app.put('/api/users/:uid', updateUser);
-  app.post('/api/users', findUserByUsername);
+  app.get('/api/user/:uid', findUserById);
+  app.get('/api/users', findUserByUsername);
   
   
   // Friend-related routes
@@ -78,9 +79,10 @@ const findUsers = async (req, res) => {
 }
 
 const findUserById = async (req, res) => {
-  const user = await usersDao.findUserbyId(req.params.uid)
+  const user = await usersDao.findUserById(req.params.uid)
   res.json(user)
 }
+
 const findUserByUsername = async (req, res) => {
   const user = await usersDao.findUserByUsername(req.params.uid)
   res.json(user)
