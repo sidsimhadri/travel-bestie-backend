@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import HelloController from "./hello-controller.js";
 import mongoose from "mongoose";
 import admin from "firebase-admin";
+import UserController from './users/users-controller.js';
 
 // Load environment variables
 dotenv.config();
@@ -65,6 +66,7 @@ app.use(express.json());
 
 // Routes
 HelloController(app);
+UserController(app);
 
 // Start the server
 app.listen(process.env.PORT || 4000, () => {

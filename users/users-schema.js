@@ -15,12 +15,6 @@ const usersSchema = new Schema({
         required: true,
         index: true
     },
-    password: { 
-        type: String, 
-        required: true 
-    },
-    name: String,
-    lastName: String,
     email: {
         type: String,
         unique: true,
