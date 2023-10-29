@@ -9,6 +9,7 @@ const quizAnswerSchema = new Schema({
 });
 
 const usersSchema = new Schema({
+    _id: String,  // This will be the user's Firebase UID
     username: {
         type: String,
         unique: true,

@@ -4,6 +4,7 @@ const UserController = (app) => {
   app.post('/api/users', createUser);
   app.delete('/api/users/:uid', deleteUser);
   app.put('/api/users/:uid', updateUser);
+  app.post('/api/users', findUserByUsername);
   
   
   // Friend-related routes
