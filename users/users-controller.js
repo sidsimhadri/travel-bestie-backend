@@ -18,16 +18,20 @@ const UserController = (app) => {
   // Quiz-related routes
   app.get('/api/user/:uid/quiz', getQuizAnswers);
   app.put('/api/user/:uid/quiz', setQuizAnswers);
+
+  // Intrest related routes
+  app.put('/api/user/interests/:uid', setInterests);
 }
 
 
+const setInterests = async (req, res) => {
+  const uid = req.params.uid;
+  const interests = req.body;
+  await usersDao.addInterests(uid, interests);
+}
+
 const createUser = async (req, res) => {
   const newUser = req.body;
-  // const user = await usersDao.findUserByUsername(newUser.username)
-  // if (user) {
-  //   res.sendStatus(409)
-  //   return
-  // }
   const insertedUser = await usersDao
   .createUser(newUser);
   res.json(insertedUser);

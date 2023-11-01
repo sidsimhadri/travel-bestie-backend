@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const { Schema, Types } = mongoose;
 
 const quizAnswerSchema = new Schema({
-    questionNumber: Number,
+    questionNumber: String,
     answer: String
 });
 
@@ -32,6 +32,9 @@ const usersSchema = new Schema({
     friends: [{
         type: Types.ObjectId,
         ref: 'users'
+    }],
+    interests: [{
+        type: String,
     }],
     quizAnswers: [quizAnswerSchema]  // This will store the user's answers to the quiz
 }, {

@@ -1,5 +1,12 @@
 import usersModel from './users-model.js';
 
+export const addInterests = async (uid, interests) => {
+    const user = await usersModel.findById(uid);
+    const combinedInterests = new Set([...user.interests, ...interests]);
+    const newInterests = [...combinedInterests];
+    await usersModel.findByIdAndUpdate(uid, { interests: newInterests }, { new: true });
+}
+
 export const createUser = (user) => usersModel.create(user);
 
 export const findUserById = (uid) => usersModel.findById(uid);
