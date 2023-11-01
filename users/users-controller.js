@@ -20,7 +20,7 @@ const UserController = (app) => {
   app.put('/api/user/:uid/quiz', setQuizAnswers);
 
   // Intrest related routes
-  app.put('/api/user/interests/:uid', setInterests);
+  app.put('/api/users/interests/:uid', setInterests);
 }
 
 
