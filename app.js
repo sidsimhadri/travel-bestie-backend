@@ -5,6 +5,7 @@ import HelloController from "./hello-controller.js";
 import mongoose from "mongoose";
 import UserController from './users/users-controller.js';
 import IteneraryController from './itenerary/interpreter.js';
+import TripController from './trips/trips-controller.js';
 
 // Load environment variables
 dotenv.config();
@@ -39,6 +40,7 @@ app.use(express.json());
 HelloController(app);
 UserController(app);
 IteneraryController(app);
+TripController(app);
 
 // Start the server
 app.listen(process.env.PORT || 4000, () => {

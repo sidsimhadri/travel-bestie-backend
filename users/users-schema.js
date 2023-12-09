@@ -36,6 +36,9 @@ const usersSchema = new Schema({
     interests: [{
         type: String,
     }],
+    tripIDs: [{
+        type: String,
+    }],
     quizAnswers: [quizAnswerSchema]  // This will store the user's answers to the quiz
 }, {
     collection: "users"
